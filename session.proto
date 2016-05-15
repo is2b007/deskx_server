@@ -1,0 +1,34 @@
+syntax = "proto3";
+package desk;
+option csharp_namespace = "deskx_uwp.protobuf";
+
+message Session {
+  int32 id = 1;
+  string username = 2;
+  string timeStart = 3;
+  string timeEnd = 4;
+  string title = 5;
+}
+
+message SessionList {
+  repeated Session sessionList = 1;
+}
+
+message SessionObject {
+  Session session = 1;
+  string type = 2;
+  string insertTime = 3;
+  string data = 4;
+}
+
+message SessionObjectMovement {
+  SessionObject sessionObject = 1;
+  string type = 2;
+  string insertTime = 3;
+  string data = 4;
+}
+
+message SessionResponse {
+  string message = 1;
+  bool error = 2;
+}

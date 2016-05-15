@@ -1,0 +1,13 @@
+syntax = "proto3";
+package desk;
+option csharp_namespace = "deskx_uwp.protobuf";
+
+message Request {
+  string username = 1;
+  string password = 2;
+}
+
+message Response {
+  bool success = 1;
+  string errorMessage = 2;
+}
