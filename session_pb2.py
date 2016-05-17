@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='session.proto',
   package='desk',
   syntax='proto3',
-  serialized_pb=_b('\n\rsession.proto\x12\x04\x64\x65sk\"Z\n\x07Session\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08username\x18\x02 \x01(\t\x12\x11\n\ttimeStart\x18\x03 \x01(\t\x12\x0f\n\x07timeEnd\x18\x04 \x01(\t\x12\r\n\x05title\x18\x05 \x01(\t\"1\n\x0bSessionList\x12\"\n\x0bsessionList\x18\x01 \x03(\x0b\x32\r.desk.Session\"_\n\rSessionObject\x12\x1e\n\x07session\x18\x01 \x01(\x0b\x32\r.desk.Session\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x12\n\ninsertTime\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x04 \x01(\t\"s\n\x15SessionObjectMovement\x12*\n\rsessionObject\x18\x01 \x01(\x0b\x32\x13.desk.SessionObject\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x12\n\ninsertTime\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x04 \x01(\t\"1\n\x0fSessionResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\r\n\x05\x65rror\x18\x02 \x01(\x08\x42\x15\xaa\x02\x12\x64\x65skx_uwp.protobufb\x06proto3')
+  serialized_pb=_b('\n\rsession.proto\x12\x04\x64\x65sk\"Z\n\x07Session\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08username\x18\x02 \x01(\t\x12\x11\n\ttimeStart\x18\x03 \x01(\t\x12\x0f\n\x07timeEnd\x18\x04 \x01(\t\x12\r\n\x05title\x18\x05 \x01(\t\"1\n\x0bSessionList\x12\"\n\x0bsessionList\x18\x01 \x03(\x0b\x32\r.desk.Session\"_\n\rSessionObject\x12\x1e\n\x07session\x18\x01 \x01(\x0b\x32\r.desk.Session\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x12\n\ninsertTime\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x04 \x01(\t\"=\n\x16SessionObjectContainer\x12#\n\x06object\x18\x01 \x03(\x0b\x32\x13.desk.SessionObject\"s\n\x15SessionObjectMovement\x12*\n\rsessionObject\x18\x01 \x01(\x0b\x32\x13.desk.SessionObject\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x12\n\ninsertTime\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x04 \x01(\t\"1\n\x0fSessionResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\r\n\x05\x65rror\x18\x02 \x01(\x08\x42\x15\xaa\x02\x12\x64\x65skx_uwp.protobufb\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -168,6 +168,37 @@ _SESSIONOBJECT = _descriptor.Descriptor(
 )
 
 
+_SESSIONOBJECTCONTAINER = _descriptor.Descriptor(
+  name='SessionObjectContainer',
+  full_name='desk.SessionObjectContainer',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='object', full_name='desk.SessionObjectContainer.object', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=263,
+  serialized_end=324,
+)
+
+
 _SESSIONOBJECTMOVEMENT = _descriptor.Descriptor(
   name='SessionObjectMovement',
   full_name='desk.SessionObjectMovement',
@@ -215,8 +246,8 @@ _SESSIONOBJECTMOVEMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=263,
-  serialized_end=378,
+  serialized_start=326,
+  serialized_end=441,
 )
 
 
@@ -253,16 +284,18 @@ _SESSIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=380,
-  serialized_end=429,
+  serialized_start=443,
+  serialized_end=492,
 )
 
 _SESSIONLIST.fields_by_name['sessionList'].message_type = _SESSION
 _SESSIONOBJECT.fields_by_name['session'].message_type = _SESSION
+_SESSIONOBJECTCONTAINER.fields_by_name['object'].message_type = _SESSIONOBJECT
 _SESSIONOBJECTMOVEMENT.fields_by_name['sessionObject'].message_type = _SESSIONOBJECT
 DESCRIPTOR.message_types_by_name['Session'] = _SESSION
 DESCRIPTOR.message_types_by_name['SessionList'] = _SESSIONLIST
 DESCRIPTOR.message_types_by_name['SessionObject'] = _SESSIONOBJECT
+DESCRIPTOR.message_types_by_name['SessionObjectContainer'] = _SESSIONOBJECTCONTAINER
 DESCRIPTOR.message_types_by_name['SessionObjectMovement'] = _SESSIONOBJECTMOVEMENT
 DESCRIPTOR.message_types_by_name['SessionResponse'] = _SESSIONRESPONSE
 
@@ -286,6 +319,13 @@ SessionObject = _reflection.GeneratedProtocolMessageType('SessionObject', (_mess
   # @@protoc_insertion_point(class_scope:desk.SessionObject)
   ))
 _sym_db.RegisterMessage(SessionObject)
+
+SessionObjectContainer = _reflection.GeneratedProtocolMessageType('SessionObjectContainer', (_message.Message,), dict(
+  DESCRIPTOR = _SESSIONOBJECTCONTAINER,
+  __module__ = 'session_pb2'
+  # @@protoc_insertion_point(class_scope:desk.SessionObjectContainer)
+  ))
+_sym_db.RegisterMessage(SessionObjectContainer)
 
 SessionObjectMovement = _reflection.GeneratedProtocolMessageType('SessionObjectMovement', (_message.Message,), dict(
   DESCRIPTOR = _SESSIONOBJECTMOVEMENT,

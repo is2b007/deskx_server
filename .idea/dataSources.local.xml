@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Django default" uuid="bd6a499b-f086-4085-81ba-cf00dd9f67ed">
+      <user-name>postgres</user-name>
+      <user-password>dfdedfc2dfcfdfd8dfcfdfc9dfcbdfc4dfc8dfcfdfc5dfc4dfc6dfd3dfc5dfc4dfcfdfc2dfc3dfcddfc2dfc6dfcbdfc4dfcedfcfdfd8</user-password>
+      <schema-pattern>deskxdb.pg_catalog deskxdb.public</schema-pattern>
+      <default-schemas>deskxdb.public</default-schemas>
+    </data-source>
+  </component>
+</project>

@@ -21,6 +21,10 @@ message SessionObject {
   string data = 4;
 }
 
+message SessionObjectContainer {
+  repeated SessionObject object = 1;
+}
+
 message SessionObjectMovement {
   SessionObject sessionObject = 1;
   string type = 2;
