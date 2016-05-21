@@ -28,18 +28,20 @@ namespace deskx_uwp.protobuf {
             "bmQYBCABKAkSDQoFdGl0bGUYBSABKAkiMQoLU2Vzc2lvbkxpc3QSIgoLc2Vz",
             "c2lvbkxpc3QYASADKAsyDS5kZXNrLlNlc3Npb24iXwoNU2Vzc2lvbk9iamVj",
             "dBIeCgdzZXNzaW9uGAEgASgLMg0uZGVzay5TZXNzaW9uEgwKBHR5cGUYAiAB",
-            "KAkSEgoKaW5zZXJ0VGltZRgDIAEoCRIMCgRkYXRhGAQgASgJInMKFVNlc3Np",
-            "b25PYmplY3RNb3ZlbWVudBIqCg1zZXNzaW9uT2JqZWN0GAEgASgLMhMuZGVz",
-            "ay5TZXNzaW9uT2JqZWN0EgwKBHR5cGUYAiABKAkSEgoKaW5zZXJ0VGltZRgD",
-            "IAEoCRIMCgRkYXRhGAQgASgJIjEKD1Nlc3Npb25SZXNwb25zZRIPCgdtZXNz",
-            "YWdlGAEgASgJEg0KBWVycm9yGAIgASgIQhWqAhJkZXNreF91d3AucHJvdG9i",
-            "dWZiBnByb3RvMw=="));
+            "KAkSEgoKaW5zZXJ0VGltZRgDIAEoCRIMCgRkYXRhGAQgASgJIj0KFlNlc3Np",
+            "b25PYmplY3RDb250YWluZXISIwoGb2JqZWN0GAEgAygLMhMuZGVzay5TZXNz",
+            "aW9uT2JqZWN0InMKFVNlc3Npb25PYmplY3RNb3ZlbWVudBIqCg1zZXNzaW9u",
+            "T2JqZWN0GAEgASgLMhMuZGVzay5TZXNzaW9uT2JqZWN0EgwKBHR5cGUYAiAB",
+            "KAkSEgoKaW5zZXJ0VGltZRgDIAEoCRIMCgRkYXRhGAQgASgJIjEKD1Nlc3Np",
+            "b25SZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJEg0KBWVycm9yGAIgASgIQhWq",
+            "AhJkZXNreF91d3AucHJvdG9idWZiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedCodeInfo(null, new pbr::GeneratedCodeInfo[] {
             new pbr::GeneratedCodeInfo(typeof(global::deskx_uwp.protobuf.Session), global::deskx_uwp.protobuf.Session.Parser, new[]{ "Id", "Username", "TimeStart", "TimeEnd", "Title" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::deskx_uwp.protobuf.SessionList), global::deskx_uwp.protobuf.SessionList.Parser, new[]{ "SessionList_" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::deskx_uwp.protobuf.SessionObject), global::deskx_uwp.protobuf.SessionObject.Parser, new[]{ "Session", "Type", "InsertTime", "Data" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::deskx_uwp.protobuf.SessionObjectContainer), global::deskx_uwp.protobuf.SessionObjectContainer.Parser, new[]{ "Object" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::deskx_uwp.protobuf.SessionObjectMovement), global::deskx_uwp.protobuf.SessionObjectMovement.Parser, new[]{ "SessionObject", "Type", "InsertTime", "Data" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::deskx_uwp.protobuf.SessionResponse), global::deskx_uwp.protobuf.SessionResponse.Parser, new[]{ "Message", "Error" }, null, null, null)
           }));
@@ -545,12 +547,107 @@ namespace deskx_uwp.protobuf {
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class SessionObjectContainer : pb::IMessage<SessionObjectContainer> {
+    private static readonly pb::MessageParser<SessionObjectContainer> _parser = new pb::MessageParser<SessionObjectContainer>(() => new SessionObjectContainer());
+    public static pb::MessageParser<SessionObjectContainer> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::deskx_uwp.protobuf.SessionReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public SessionObjectContainer() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public SessionObjectContainer(SessionObjectContainer other) : this() {
+      object_ = other.object_.Clone();
+    }
+
+    public SessionObjectContainer Clone() {
+      return new SessionObjectContainer(this);
+    }
+
+    /// <summary>Field number for the "object" field.</summary>
+    public const int ObjectFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::deskx_uwp.protobuf.SessionObject> _repeated_object_codec
+        = pb::FieldCodec.ForMessage(10, global::deskx_uwp.protobuf.SessionObject.Parser);
+    private readonly pbc::RepeatedField<global::deskx_uwp.protobuf.SessionObject> object_ = new pbc::RepeatedField<global::deskx_uwp.protobuf.SessionObject>();
+    public pbc::RepeatedField<global::deskx_uwp.protobuf.SessionObject> Object {
+      get { return object_; }
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as SessionObjectContainer);
+    }
+
+    public bool Equals(SessionObjectContainer other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!object_.Equals(other.object_)) return false;
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= object_.GetHashCode();
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      object_.WriteTo(output, _repeated_object_codec);
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      size += object_.CalculateSize(_repeated_object_codec);
+      return size;
+    }
+
+    public void MergeFrom(SessionObjectContainer other) {
+      if (other == null) {
+        return;
+      }
+      object_.Add(other.object_);
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            object_.AddEntriesFrom(input, _repeated_object_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
   public sealed partial class SessionObjectMovement : pb::IMessage<SessionObjectMovement> {
     private static readonly pb::MessageParser<SessionObjectMovement> _parser = new pb::MessageParser<SessionObjectMovement>(() => new SessionObjectMovement());
     public static pb::MessageParser<SessionObjectMovement> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::deskx_uwp.protobuf.SessionReflection.Descriptor.MessageTypes[3]; }
+      get { return global::deskx_uwp.protobuf.SessionReflection.Descriptor.MessageTypes[4]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -740,7 +837,7 @@ namespace deskx_uwp.protobuf {
     public static pb::MessageParser<SessionResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::deskx_uwp.protobuf.SessionReflection.Descriptor.MessageTypes[4]; }
+      get { return global::deskx_uwp.protobuf.SessionReflection.Descriptor.MessageTypes[5]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {

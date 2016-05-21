@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^session/join/', views.join_session),
     url(r'^session/list/', views.get_list),
     url(r'^session/object/store/', views.object_store),
+    url(r'^session/object/get/', views.get_objects),
 ]

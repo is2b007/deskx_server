@@ -72,9 +72,41 @@ def object_store(webRequest):
     webRequestbody = str(webRequest.body)
     objectRequest = session_pb2.SessionObject.FromString(webRequestbody)
     objectSession = session.objects.get(id=objectRequest.session.id)
-    s = session_object(session=objectSession, date_added = objectRequest.insertTime, data_type = objectRequest.type, binary_data = objectRequest.data)
+    s = session_object(session=objectSession, date_added = datetime.datetime.now(), data_type = objectRequest.type, binary_data = objectRequest.data)
     s.save()
     
     response = session_pb2.SessionResponse()
     response.error = False
     return HttpResponse(response.SerializeToString(), content_type="application/octet-stream")
+
+@login_required
+def get_objects(webRequest):
+    webRequestBody = str(webRequest.body)
+    # lets parse string
+    parsedSession = session_pb2.Session.FromString(webRequestbody)
+    # grab the object relevant to id in string
+    objectSession = session.objects.get(id=parsedSession.id)
+    # grab all session_objects from the desired session
+    associatedObjects = session_object.objects.all().filter(session=parsedSession.id)
+    # create a return list that we'll populate with each session_object
+    returnList = session_pb2.SessionObjectContainer;
+    # if the session has an end date or if we haven't gotten any data from here before then return every object
+    if not (objectSession.end_date) or parsedSession.timeEnd == "NO":
+        for eachObject in associatedObjects:
+            protoObject = returnList.object.add()
+            protoObject.session = eachObject.id
+            protoObject.type = eachObject.data_type
+            protoObject.insertTime = str(eachObject.date_added)
+            protoObject.data = eachObject.binary_data
+    else:
+    # else its a live session
+        for eachObject in associatedObjects:
+        # loop through each object in the filtered objects we have and populate with objects 
+            if (parsedSession.timeEnd() < eachObject.date_added):
+                protoObject = returnList.object.add()
+                protoObject.session = eachObject.id
+                protoObject.type = eachObject.data_type
+                protoObject.insertTime = str(eachObject.date_added)
+                protoObject.data = eachObject.binary_data
+
+    return HttpResponse(returnList.SerializeToString(), content_type="application/octet-stream")
