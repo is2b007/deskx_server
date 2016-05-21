@@ -47,6 +47,13 @@ def create_session(webRequest):
     protoSession.id = s.id
     return HttpResponse(protoSession.SerializeToString(), content_type="application/octet-stream")
 
+@login_required
+def join_session(webRequest):   
+    webRequestbody = str(webRequest.body)
+    ojectRequest = session_pb2.SessionObject.FromString(webRequestbody)
+    objectSession = session.objects.get(id=objectRequest.session.id)
+    return HttpResponse(protoSession.SerializeToString(), content_type="application/octet-stream")
+    
 @login_required   
 def get_list(webRequest):
     sessionList = session.objects.all()
