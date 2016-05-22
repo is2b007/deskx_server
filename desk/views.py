@@ -41,23 +41,56 @@ def logout_view(request):
 
 @login_required
 def create_session(webRequest):
-    s = session(author=webRequest.user, title = "DeskSession", pub_date = datetime.datetime.now())
+    # take the webrequest and take title and pub date create new database
+    webRequestbody = str(webRequest.body)
+    objectRequest = session_pb2.Session.FromString(webRequestbody)
+    s = session(author=webRequest.user, title = objectRequest.title, pub_date = datetime.datetime.now())
     s.save()
+    # send back a proto object 
     protoSession = session_pb2.Session()
     protoSession.id = s.id
     return HttpResponse(protoSession.SerializeToString(), content_type="application/octet-stream")
 
 @login_required
+def update_session(webRequest):
+    webRequestbody = str(webRequest.body)
+    objectRequest = session_pb2.SessionObject.FromString(webRequestbody)
+    objectSession = session.objects.get(id=objectRequest.session.id)
+    # Update Details
+    objectSession.author = webRequestbody.username
+    objectSession.title = webRequestbody.title
+    objectSession.pub_date = timeStart
+    objectSession.end_date = timeEnd
+    objectSession.save()
+    # Send a Proto of the new session filled with objsectSession details
+    protoSession = session_pb2.Session()
+    protoSession.id = objectSession.id
+    protoSession.timeStart = objectSession.pub_date
+    protoSession.title = objectSession.title
+    protoSession.timeEnd = objectSession.end_date
+    return HttpResponse(protoSession.SerializeToString(), content_type="appplication/octet-stream")
+
+@login_required
 def join_session(webRequest):   
+    # get requested object from DB
     webRequestbody = str(webRequest.body)
     ojectRequest = session_pb2.SessionObject.FromString(webRequestbody)
     objectSession = session.objects.get(id=objectRequest.session.id)
+    # construct proto object from session DB object to send back
+    protoSession = session_pb2.Session()
+    protoSession.id = objectSession.id
+    protoSession.username = objectSession.author
+    protoSession.timeStart = objectSession.pub_date
+    protoSession.title = objectSession.title
+    protoSession.timeEnd = objectSession.end_date
     return HttpResponse(protoSession.SerializeToString(), content_type="application/octet-stream")
     
 @login_required   
 def get_list(webRequest):
+    # grab all session objeccts from DB
     sessionList = session.objects.all()
     protoSessionList = session_pb2.SessionList()
+    # for each session in the session list construct proto objects in a proto list to send back
     for eachSession in sessionList:
         protoSession = protoSessionList.sessionList.add()
         protoSession.id = eachSession.id
@@ -74,7 +107,6 @@ def object_store(webRequest):
     objectSession = session.objects.get(id=objectRequest.session.id)
     s = session_object(session=objectSession, date_added = datetime.datetime.now(), data_type = objectRequest.type, binary_data = objectRequest.data)
     s.save()
-    
     response = session_pb2.SessionResponse()
     response.error = False
     return HttpResponse(response.SerializeToString(), content_type="application/octet-stream")
