@@ -74,15 +74,15 @@ def update_session(webRequest):
 def join_session(webRequest):   
     # get requested object from DB
     webRequestbody = str(webRequest.body)
-    ojectRequest = session_pb2.SessionObject.FromString(webRequestbody)
-    objectSession = session.objects.get(id=objectRequest.session.id)
+    objectRequest = session_pb2.Session.FromString(webRequestbody)
+    objectSession = session.objects.get(id=objectRequest.id)
     # construct proto object from session DB object to send back
     protoSession = session_pb2.Session()
     protoSession.id = objectSession.id
-    protoSession.username = objectSession.author
-    protoSession.timeStart = objectSession.pub_date
+    protoSession.username = objectSession.author.username
+    protoSession.timeStart = str(objectSession.pub_date)
     protoSession.title = objectSession.title
-    protoSession.timeEnd = objectSession.end_date
+    protoSession.timeEnd = str(objectSession.end_date)
     return HttpResponse(protoSession.SerializeToString(), content_type="application/octet-stream")
     
 @login_required   
@@ -113,20 +113,20 @@ def object_store(webRequest):
 
 @login_required
 def get_objects(webRequest):
-    webRequestBody = str(webRequest.body)
+    webBody = str(webRequest.body)
     # lets parse string
-    parsedSession = session_pb2.Session.FromString(webRequestbody)
+    parsedSession = session_pb2.Session.FromString(webBody)
     # grab the object relevant to id in string
     objectSession = session.objects.get(id=parsedSession.id)
     # grab all session_objects from the desired session
     associatedObjects = session_object.objects.all().filter(session=parsedSession.id)
     # create a return list that we'll populate with each session_object
-    returnList = session_pb2.SessionObjectContainer;
+    returnList = session_pb2.SessionObjectContainer()
     # if the session has an end date or if we haven't gotten any data from here before then return every object
     if not (objectSession.end_date) or parsedSession.timeEnd == "NO":
         for eachObject in associatedObjects:
-            protoObject = returnList.object.add()
-            protoObject.session = eachObject.id
+            protoObject = returnList.sessionContainer.add()
+            # protoObject.session = eachObject.id
             protoObject.type = eachObject.data_type
             protoObject.insertTime = str(eachObject.date_added)
             protoObject.data = eachObject.binary_data
@@ -135,7 +135,7 @@ def get_objects(webRequest):
         for eachObject in associatedObjects:
         # loop through each object in the filtered objects we have and populate with objects 
             if (parsedSession.timeEnd() < eachObject.date_added):
-                protoObject = returnList.object.add()
+                protoObject = returnList.sessionContainer.add()
                 protoObject.session = eachObject.id
                 protoObject.type = eachObject.data_type
                 protoObject.insertTime = str(eachObject.date_added)

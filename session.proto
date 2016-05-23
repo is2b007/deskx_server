@@ -22,7 +22,7 @@ message SessionObject {
 }
 
 message SessionObjectContainer {
-  repeated SessionObject object = 1;
+  repeated SessionObject sessionContainer = 1;
 }
 
 message SessionObjectMovement {

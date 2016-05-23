@@ -28,20 +28,20 @@ namespace deskx_uwp.protobuf {
             "bmQYBCABKAkSDQoFdGl0bGUYBSABKAkiMQoLU2Vzc2lvbkxpc3QSIgoLc2Vz",
             "c2lvbkxpc3QYASADKAsyDS5kZXNrLlNlc3Npb24iXwoNU2Vzc2lvbk9iamVj",
             "dBIeCgdzZXNzaW9uGAEgASgLMg0uZGVzay5TZXNzaW9uEgwKBHR5cGUYAiAB",
-            "KAkSEgoKaW5zZXJ0VGltZRgDIAEoCRIMCgRkYXRhGAQgASgJIj0KFlNlc3Np",
-            "b25PYmplY3RDb250YWluZXISIwoGb2JqZWN0GAEgAygLMhMuZGVzay5TZXNz",
-            "aW9uT2JqZWN0InMKFVNlc3Npb25PYmplY3RNb3ZlbWVudBIqCg1zZXNzaW9u",
-            "T2JqZWN0GAEgASgLMhMuZGVzay5TZXNzaW9uT2JqZWN0EgwKBHR5cGUYAiAB",
-            "KAkSEgoKaW5zZXJ0VGltZRgDIAEoCRIMCgRkYXRhGAQgASgJIjEKD1Nlc3Np",
-            "b25SZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJEg0KBWVycm9yGAIgASgIQhWq",
-            "AhJkZXNreF91d3AucHJvdG9idWZiBnByb3RvMw=="));
+            "KAkSEgoKaW5zZXJ0VGltZRgDIAEoCRIMCgRkYXRhGAQgASgJIkcKFlNlc3Np",
+            "b25PYmplY3RDb250YWluZXISLQoQc2Vzc2lvbkNvbnRhaW5lchgBIAMoCzIT",
+            "LmRlc2suU2Vzc2lvbk9iamVjdCJzChVTZXNzaW9uT2JqZWN0TW92ZW1lbnQS",
+            "KgoNc2Vzc2lvbk9iamVjdBgBIAEoCzITLmRlc2suU2Vzc2lvbk9iamVjdBIM",
+            "CgR0eXBlGAIgASgJEhIKCmluc2VydFRpbWUYAyABKAkSDAoEZGF0YRgEIAEo",
+            "CSIxCg9TZXNzaW9uUmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCRINCgVlcnJv",
+            "chgCIAEoCEIVqgISZGVza3hfdXdwLnByb3RvYnVmYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedCodeInfo(null, new pbr::GeneratedCodeInfo[] {
             new pbr::GeneratedCodeInfo(typeof(global::deskx_uwp.protobuf.Session), global::deskx_uwp.protobuf.Session.Parser, new[]{ "Id", "Username", "TimeStart", "TimeEnd", "Title" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::deskx_uwp.protobuf.SessionList), global::deskx_uwp.protobuf.SessionList.Parser, new[]{ "SessionList_" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::deskx_uwp.protobuf.SessionObject), global::deskx_uwp.protobuf.SessionObject.Parser, new[]{ "Session", "Type", "InsertTime", "Data" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::deskx_uwp.protobuf.SessionObjectContainer), global::deskx_uwp.protobuf.SessionObjectContainer.Parser, new[]{ "Object" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::deskx_uwp.protobuf.SessionObjectContainer), global::deskx_uwp.protobuf.SessionObjectContainer.Parser, new[]{ "SessionContainer" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::deskx_uwp.protobuf.SessionObjectMovement), global::deskx_uwp.protobuf.SessionObjectMovement.Parser, new[]{ "SessionObject", "Type", "InsertTime", "Data" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::deskx_uwp.protobuf.SessionResponse), global::deskx_uwp.protobuf.SessionResponse.Parser, new[]{ "Message", "Error" }, null, null, null)
           }));
@@ -566,20 +566,20 @@ namespace deskx_uwp.protobuf {
     partial void OnConstruction();
 
     public SessionObjectContainer(SessionObjectContainer other) : this() {
-      object_ = other.object_.Clone();
+      sessionContainer_ = other.sessionContainer_.Clone();
     }
 
     public SessionObjectContainer Clone() {
       return new SessionObjectContainer(this);
     }
 
-    /// <summary>Field number for the "object" field.</summary>
-    public const int ObjectFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::deskx_uwp.protobuf.SessionObject> _repeated_object_codec
+    /// <summary>Field number for the "sessionContainer" field.</summary>
+    public const int SessionContainerFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::deskx_uwp.protobuf.SessionObject> _repeated_sessionContainer_codec
         = pb::FieldCodec.ForMessage(10, global::deskx_uwp.protobuf.SessionObject.Parser);
-    private readonly pbc::RepeatedField<global::deskx_uwp.protobuf.SessionObject> object_ = new pbc::RepeatedField<global::deskx_uwp.protobuf.SessionObject>();
-    public pbc::RepeatedField<global::deskx_uwp.protobuf.SessionObject> Object {
-      get { return object_; }
+    private readonly pbc::RepeatedField<global::deskx_uwp.protobuf.SessionObject> sessionContainer_ = new pbc::RepeatedField<global::deskx_uwp.protobuf.SessionObject>();
+    public pbc::RepeatedField<global::deskx_uwp.protobuf.SessionObject> SessionContainer {
+      get { return sessionContainer_; }
     }
 
     public override bool Equals(object other) {
@@ -593,13 +593,13 @@ namespace deskx_uwp.protobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!object_.Equals(other.object_)) return false;
+      if(!sessionContainer_.Equals(other.sessionContainer_)) return false;
       return true;
     }
 
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= object_.GetHashCode();
+      hash ^= sessionContainer_.GetHashCode();
       return hash;
     }
 
@@ -608,12 +608,12 @@ namespace deskx_uwp.protobuf {
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
-      object_.WriteTo(output, _repeated_object_codec);
+      sessionContainer_.WriteTo(output, _repeated_sessionContainer_codec);
     }
 
     public int CalculateSize() {
       int size = 0;
-      size += object_.CalculateSize(_repeated_object_codec);
+      size += sessionContainer_.CalculateSize(_repeated_sessionContainer_codec);
       return size;
     }
 
@@ -621,7 +621,7 @@ namespace deskx_uwp.protobuf {
       if (other == null) {
         return;
       }
-      object_.Add(other.object_);
+      sessionContainer_.Add(other.sessionContainer_);
     }
 
     public void MergeFrom(pb::CodedInputStream input) {
@@ -632,7 +632,7 @@ namespace deskx_uwp.protobuf {
             input.SkipLastField();
             break;
           case 10: {
-            object_.AddEntriesFrom(input, _repeated_object_codec);
+            sessionContainer_.AddEntriesFrom(input, _repeated_sessionContainer_codec);
             break;
           }
         }
