@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from desk.models import session, session_object
 import datetime
+from django.utils.dateparse import parse_datetime
 import authenticate_pb2
 import session_pb2
 
@@ -119,26 +120,17 @@ def get_objects(webRequest):
     # grab the object relevant to id in string
     objectSession = session.objects.get(id=parsedSession.id)
     # grab all session_objects from the desired session
-    associatedObjects = session_object.objects.all().filter(session=parsedSession.id)
+    associatedObjects = session_object.objects.all().filter(session=parsedSession.id).order_by('date_added')
     # create a return list that we'll populate with each session_object
     returnList = session_pb2.SessionObjectContainer()
-    # if the session has an end date or if we haven't gotten any data from here before then return every object
-    if not (objectSession.end_date) or parsedSession.timeEnd == "NO":
-        for eachObject in associatedObjects:
+    # only return 
+    for eachObject in associatedObjects:
+    # loop through each object in the filtered objects we have and populate with objects 
+        if (parsedSession.timeEnd == "NO" or (parse_datetime(parsedSession.timeEnd)  < eachObject.date_added)):
             protoObject = returnList.sessionContainer.add()
             # protoObject.session = eachObject.id
             protoObject.type = eachObject.data_type
             protoObject.insertTime = str(eachObject.date_added)
             protoObject.data = eachObject.binary_data
-    else:
-    # else its a live session
-        for eachObject in associatedObjects:
-        # loop through each object in the filtered objects we have and populate with objects 
-            if (parsedSession.timeEnd() < eachObject.date_added):
-                protoObject = returnList.sessionContainer.add()
-                protoObject.session = eachObject.id
-                protoObject.type = eachObject.data_type
-                protoObject.insertTime = str(eachObject.date_added)
-                protoObject.data = eachObject.binary_data
 
     return HttpResponse(returnList.SerializeToString(), content_type="application/octet-stream")

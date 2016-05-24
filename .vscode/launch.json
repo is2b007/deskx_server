@@ -33,6 +33,7 @@
             "program": "${workspaceRoot}/manage.py",
             "args": [
                 "runserver",
+                "192.168.0.156:8000",
                 "--noreload"
             ],
             "debugOptions": [
