@@ -26,21 +26,22 @@ namespace deskx_uwp.protobuf {
             "Cg1zZXNzaW9uLnByb3RvEgRkZXNrIloKB1Nlc3Npb24SCgoCaWQYASABKAUS",
             "EAoIdXNlcm5hbWUYAiABKAkSEQoJdGltZVN0YXJ0GAMgASgJEg8KB3RpbWVF",
             "bmQYBCABKAkSDQoFdGl0bGUYBSABKAkiMQoLU2Vzc2lvbkxpc3QSIgoLc2Vz",
-            "c2lvbkxpc3QYASADKAsyDS5kZXNrLlNlc3Npb24iXwoNU2Vzc2lvbk9iamVj",
+            "c2lvbkxpc3QYASADKAsyDS5kZXNrLlNlc3Npb24ibQoNU2Vzc2lvbk9iamVj",
             "dBIeCgdzZXNzaW9uGAEgASgLMg0uZGVzay5TZXNzaW9uEgwKBHR5cGUYAiAB",
-            "KAkSEgoKaW5zZXJ0VGltZRgDIAEoCRIMCgRkYXRhGAQgASgJIkcKFlNlc3Np",
-            "b25PYmplY3RDb250YWluZXISLQoQc2Vzc2lvbkNvbnRhaW5lchgBIAMoCzIT",
-            "LmRlc2suU2Vzc2lvbk9iamVjdCJzChVTZXNzaW9uT2JqZWN0TW92ZW1lbnQS",
-            "KgoNc2Vzc2lvbk9iamVjdBgBIAEoCzITLmRlc2suU2Vzc2lvbk9iamVjdBIM",
-            "CgR0eXBlGAIgASgJEhIKCmluc2VydFRpbWUYAyABKAkSDAoEZGF0YRgEIAEo",
-            "CSIxCg9TZXNzaW9uUmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCRINCgVlcnJv",
-            "chgCIAEoCEIVqgISZGVza3hfdXdwLnByb3RvYnVmYgZwcm90bzM="));
+            "KAkSEgoKaW5zZXJ0VGltZRgDIAEoCRIMCgRkYXRhGAQgASgJEgwKBHVzZXIY",
+            "BSABKAkiRwoWU2Vzc2lvbk9iamVjdENvbnRhaW5lchItChBzZXNzaW9uQ29u",
+            "dGFpbmVyGAEgAygLMhMuZGVzay5TZXNzaW9uT2JqZWN0InMKFVNlc3Npb25P",
+            "YmplY3RNb3ZlbWVudBIqCg1zZXNzaW9uT2JqZWN0GAEgASgLMhMuZGVzay5T",
+            "ZXNzaW9uT2JqZWN0EgwKBHR5cGUYAiABKAkSEgoKaW5zZXJ0VGltZRgDIAEo",
+            "CRIMCgRkYXRhGAQgASgJIjEKD1Nlc3Npb25SZXNwb25zZRIPCgdtZXNzYWdl",
+            "GAEgASgJEg0KBWVycm9yGAIgASgIQhWqAhJkZXNreF91d3AucHJvdG9idWZi",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedCodeInfo(null, new pbr::GeneratedCodeInfo[] {
             new pbr::GeneratedCodeInfo(typeof(global::deskx_uwp.protobuf.Session), global::deskx_uwp.protobuf.Session.Parser, new[]{ "Id", "Username", "TimeStart", "TimeEnd", "Title" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::deskx_uwp.protobuf.SessionList), global::deskx_uwp.protobuf.SessionList.Parser, new[]{ "SessionList_" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::deskx_uwp.protobuf.SessionObject), global::deskx_uwp.protobuf.SessionObject.Parser, new[]{ "Session", "Type", "InsertTime", "Data" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::deskx_uwp.protobuf.SessionObject), global::deskx_uwp.protobuf.SessionObject.Parser, new[]{ "Session", "Type", "InsertTime", "Data", "User" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::deskx_uwp.protobuf.SessionObjectContainer), global::deskx_uwp.protobuf.SessionObjectContainer.Parser, new[]{ "SessionContainer" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::deskx_uwp.protobuf.SessionObjectMovement), global::deskx_uwp.protobuf.SessionObjectMovement.Parser, new[]{ "SessionObject", "Type", "InsertTime", "Data" }, null, null, null),
             new pbr::GeneratedCodeInfo(typeof(global::deskx_uwp.protobuf.SessionResponse), global::deskx_uwp.protobuf.SessionResponse.Parser, new[]{ "Message", "Error" }, null, null, null)
@@ -380,6 +381,7 @@ namespace deskx_uwp.protobuf {
       type_ = other.type_;
       insertTime_ = other.insertTime_;
       data_ = other.data_;
+      user_ = other.user_;
     }
 
     public SessionObject Clone() {
@@ -426,6 +428,16 @@ namespace deskx_uwp.protobuf {
       }
     }
 
+    /// <summary>Field number for the "user" field.</summary>
+    public const int UserFieldNumber = 5;
+    private string user_ = "";
+    public string User {
+      get { return user_; }
+      set {
+        user_ = pb::Preconditions.CheckNotNull(value, "value");
+      }
+    }
+
     public override bool Equals(object other) {
       return Equals(other as SessionObject);
     }
@@ -441,6 +453,7 @@ namespace deskx_uwp.protobuf {
       if (Type != other.Type) return false;
       if (InsertTime != other.InsertTime) return false;
       if (Data != other.Data) return false;
+      if (User != other.User) return false;
       return true;
     }
 
@@ -450,6 +463,7 @@ namespace deskx_uwp.protobuf {
       if (Type.Length != 0) hash ^= Type.GetHashCode();
       if (InsertTime.Length != 0) hash ^= InsertTime.GetHashCode();
       if (Data.Length != 0) hash ^= Data.GetHashCode();
+      if (User.Length != 0) hash ^= User.GetHashCode();
       return hash;
     }
 
@@ -474,6 +488,10 @@ namespace deskx_uwp.protobuf {
         output.WriteRawTag(34);
         output.WriteString(Data);
       }
+      if (User.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(User);
+      }
     }
 
     public int CalculateSize() {
@@ -489,6 +507,9 @@ namespace deskx_uwp.protobuf {
       }
       if (Data.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Data);
+      }
+      if (User.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(User);
       }
       return size;
     }
@@ -511,6 +532,9 @@ namespace deskx_uwp.protobuf {
       }
       if (other.Data.Length != 0) {
         Data = other.Data;
+      }
+      if (other.User.Length != 0) {
+        User = other.User;
       }
     }
 
@@ -538,6 +562,10 @@ namespace deskx_uwp.protobuf {
           }
           case 34: {
             Data = input.ReadString();
+            break;
+          }
+          case 42: {
+            User = input.ReadString();
             break;
           }
         }

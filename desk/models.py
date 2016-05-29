@@ -16,6 +16,7 @@ class session(models.Model):
 
 class session_object(models.Model):
     session = models.ForeignKey(session, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL)
     date_added = models.DateTimeField('date added')
     data_type = models.CharField(max_length=200)
     _data = models.TextField(
@@ -41,3 +42,8 @@ class session_object_movement(models.Model):
         return base64.decodestring(self._data)
 
     binary_data = property(get_data, set_data)
+
+class session_message(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL)
+    session = models.ForeignKey(session, on_delete=models.CASCADE)
+    text = models.CharField(max_length=300)

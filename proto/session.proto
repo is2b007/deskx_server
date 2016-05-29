@@ -19,6 +19,7 @@ message SessionObject {
   string type = 2;
   string insertTime = 3;
   string data = 4;
+  string user = 5;
 }
 
 message SessionObjectContainer {

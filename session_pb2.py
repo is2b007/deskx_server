@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='session.proto',
   package='desk',
   syntax='proto3',
-  serialized_pb=_b('\n\rsession.proto\x12\x04\x64\x65sk\"Z\n\x07Session\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08username\x18\x02 \x01(\t\x12\x11\n\ttimeStart\x18\x03 \x01(\t\x12\x0f\n\x07timeEnd\x18\x04 \x01(\t\x12\r\n\x05title\x18\x05 \x01(\t\"1\n\x0bSessionList\x12\"\n\x0bsessionList\x18\x01 \x03(\x0b\x32\r.desk.Session\"_\n\rSessionObject\x12\x1e\n\x07session\x18\x01 \x01(\x0b\x32\r.desk.Session\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x12\n\ninsertTime\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x04 \x01(\t\"G\n\x16SessionObjectContainer\x12-\n\x10sessionContainer\x18\x01 \x03(\x0b\x32\x13.desk.SessionObject\"s\n\x15SessionObjectMovement\x12*\n\rsessionObject\x18\x01 \x01(\x0b\x32\x13.desk.SessionObject\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x12\n\ninsertTime\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x04 \x01(\t\"1\n\x0fSessionResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\r\n\x05\x65rror\x18\x02 \x01(\x08\x42\x15\xaa\x02\x12\x64\x65skx_uwp.protobufb\x06proto3')
+  serialized_pb=_b('\n\rsession.proto\x12\x04\x64\x65sk\"Z\n\x07Session\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08username\x18\x02 \x01(\t\x12\x11\n\ttimeStart\x18\x03 \x01(\t\x12\x0f\n\x07timeEnd\x18\x04 \x01(\t\x12\r\n\x05title\x18\x05 \x01(\t\"1\n\x0bSessionList\x12\"\n\x0bsessionList\x18\x01 \x03(\x0b\x32\r.desk.Session\"m\n\rSessionObject\x12\x1e\n\x07session\x18\x01 \x01(\x0b\x32\r.desk.Session\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x12\n\ninsertTime\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x04 \x01(\t\x12\x0c\n\x04user\x18\x05 \x01(\t\"G\n\x16SessionObjectContainer\x12-\n\x10sessionContainer\x18\x01 \x03(\x0b\x32\x13.desk.SessionObject\"s\n\x15SessionObjectMovement\x12*\n\rsessionObject\x18\x01 \x01(\x0b\x32\x13.desk.SessionObject\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x12\n\ninsertTime\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x04 \x01(\t\"1\n\x0fSessionResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\r\n\x05\x65rror\x18\x02 \x01(\x08\x42\x15\xaa\x02\x12\x64\x65skx_uwp.protobufb\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -151,6 +151,13 @@ _SESSIONOBJECT = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='user', full_name='desk.SessionObject.user', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -164,7 +171,7 @@ _SESSIONOBJECT = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=166,
-  serialized_end=261,
+  serialized_end=275,
 )
 
 
@@ -194,8 +201,8 @@ _SESSIONOBJECTCONTAINER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=263,
-  serialized_end=334,
+  serialized_start=277,
+  serialized_end=348,
 )
 
 
@@ -246,8 +253,8 @@ _SESSIONOBJECTMOVEMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=336,
-  serialized_end=451,
+  serialized_start=350,
+  serialized_end=465,
 )
 
 
@@ -284,8 +291,8 @@ _SESSIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=453,
-  serialized_end=502,
+  serialized_start=467,
+  serialized_end=516,
 )
 
 _SESSIONLIST.fields_by_name['sessionList'].message_type = _SESSION
